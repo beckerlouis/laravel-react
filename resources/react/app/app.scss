@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  @apply bg-gray-100;
+}
+
+main {
+  @apply sm:px-6 lg:px-8 space-y-6;
+  @apply max-w-7xl mx-auto;
+}
