@@ -5,8 +5,10 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint --fix --ext \".js,.jsx,.ts,.tsx\" .",
+    "pint": "\"./vendor/bin/pint\"",
+    "linter": "npm run format && npm run lint && npm run pint",
     "format": "prettier \"resources/**/*.{scss,css}\" --write",
-    "pre-commit": "npm run format && npm run lint"
+    "pre-commit": "npm run linter"
   },
   "devDependencies": {
     "@headlessui/react": "^1.7.15",
