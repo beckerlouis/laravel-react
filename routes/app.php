@@ -16,16 +16,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth')->group(function () {
-  Route::middleware('verified')->group(function () {
-    Route::get('/', AppPageAction::class)->name('app');
+    Route::middleware('verified')->group(function () {
+        Route::get('/', AppPageAction::class)->name('app');
 
-    Route::prefix('profile')->middleware('password.confirm')->group(function () {
-      Route::get('/', ProfilePageAction::class)->name('profile');
-      Route::patch('/', [ProfilePageAction::class, 'update'])->name('profile.update');
-      Route::delete('/', [ProfilePageAction::class, 'destroy'])->name('profile.destroy');
+        Route::prefix('profile')->middleware('password.confirm')->group(function () {
+            Route::get('/', ProfilePageAction::class)->name('profile');
+            Route::patch('/', [ProfilePageAction::class, 'update'])->name('profile.update');
+            Route::delete('/', [ProfilePageAction::class, 'destroy'])->name('profile.destroy');
+        });
     });
-  });
 });
 
-require __DIR__ . '/auth.php';
-require __DIR__ . '/check.php';
+require __DIR__.'/auth.php';
+require __DIR__.'/check.php';

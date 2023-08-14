@@ -47,8 +47,8 @@ return [
 
         'page_paths' => [
 
-          resource_path('react/app/Pages'),
-          resource_path('react/web/Pages'),
+            resource_path('react/app/Pages'),
+            resource_path('react/web/Pages'),
 
         ],
 

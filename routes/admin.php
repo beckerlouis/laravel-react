@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth')->group(function () {
-  Route::get('/', DashboardPageAction::class)->name('app');
+    Route::get('/', DashboardPageAction::class)->name('app');
 });
 
 require __DIR__.'/check.php';

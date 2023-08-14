@@ -13,38 +13,38 @@ use Inertia\Response;
 
 class ConfirmablePasswordController extends Controller
 {
-  /**
-   * Show the confirm password view.
-   */
-  public function show(): Response
-  {
-    $seo = [
-      'title' => 'Confirm your password - laravel-react',
-      'description' => '',
-      'keywords' => ['keywords1', 'keywords2', 'keywords3'],
-    ];
+    /**
+     * Show the confirm password view.
+     */
+    public function show(): Response
+    {
+        $seo = [
+            'title' => 'Confirm your password - laravel-react',
+            'description' => '',
+            'keywords' => ['keywords1', 'keywords2', 'keywords3'],
+        ];
 
-    return Inertia::render('Auth/ConfirmPassword', [
-      'seo' => $seo,
-    ]);
-  }
-
-  /**
-   * Confirm the user's password.
-   */
-  public function store(Request $request): RedirectResponse
-  {
-    if (!Auth::guard('web')->validate([
-      'email' => $request->user()->email,
-      'password' => $request->password,
-    ])) {
-      throw ValidationException::withMessages([
-        'password' => __('auth.password'),
-      ]);
+        return Inertia::render('Auth/ConfirmPassword', [
+            'seo' => $seo,
+        ]);
     }
 
-    $request->session()->put('auth.password_confirmed_at', time());
+    /**
+     * Confirm the user's password.
+     */
+    public function store(Request $request): RedirectResponse
+    {
+        if (! Auth::guard('web')->validate([
+            'email' => $request->user()->email,
+            'password' => $request->password,
+        ])) {
+            throw ValidationException::withMessages([
+                'password' => __('auth.password'),
+            ]);
+        }
 
-    return redirect()->intended(RouteServiceProvider::HOME);
-  }
+        $request->session()->put('auth.password_confirmed_at', time());
+
+        return redirect()->intended(RouteServiceProvider::HOME);
+    }
 }

@@ -13,46 +13,46 @@ use Inertia\Response;
 
 class AuthenticatedSessionController extends Controller
 {
-  /**
-   * Display the login view.
-   */
-  public function create(): Response
-  {
-    $seo = [
-      'title' => 'Login - laravel-react',
-      'description' => '',
-      'keywords' => ['keywords1', 'keywords2', 'keywords3'],
-    ];
+    /**
+     * Display the login view.
+     */
+    public function create(): Response
+    {
+        $seo = [
+            'title' => 'Login - laravel-react',
+            'description' => '',
+            'keywords' => ['keywords1', 'keywords2', 'keywords3'],
+        ];
 
-    return Inertia::render('Auth/Login', [
-      'status' => session('status'),
-      'seo' => $seo,
-    ]);
-  }
+        return Inertia::render('Auth/Login', [
+            'status' => session('status'),
+            'seo' => $seo,
+        ]);
+    }
 
-  /**
-   * Handle an incoming authentication request.
-   */
-  public function store(LoginRequest $request): RedirectResponse
-  {
-    $request->authenticate();
+    /**
+     * Handle an incoming authentication request.
+     */
+    public function store(LoginRequest $request): RedirectResponse
+    {
+        $request->authenticate();
 
-    $request->session()->regenerate();
+        $request->session()->regenerate();
 
-    return redirect()->intended(RouteServiceProvider::HOME);
-  }
+        return redirect()->intended(RouteServiceProvider::HOME);
+    }
 
-  /**
-   * Destroy an authenticated session.
-   */
-  public function destroy(Request $request): RedirectResponse
-  {
-    Auth::guard('web')->logout();
+    /**
+     * Destroy an authenticated session.
+     */
+    public function destroy(Request $request): RedirectResponse
+    {
+        Auth::guard('web')->logout();
 
-    $request->session()->invalidate();
+        $request->session()->invalidate();
 
-    $request->session()->regenerateToken();
+        $request->session()->regenerateToken();
 
-    return redirect('/');
-  }
+        return redirect('/');
+    }
 }
