@@ -1,25 +1,25 @@
 import { faCheck, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
-import React, { Fragment, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
 import { usePage } from '@inertiajs/react';
 
 const DisplayDuration = 5000;
 
-const Notifications = () => (
-  <Fragment>
+export const Notifications = () => (
+  <React.Fragment>
     <Error/>
     <Success/>
-  </Fragment>
+  </React.Fragment>
 );
 
 const Error = () => {
-  const [ display, setDisplay ] = useState(false);
+  const [ display, setDisplay ] = React.useState(false);
 
   const { flash }: any = usePage().props;
 
   const { error } = flash;
 
-  useEffect(() => {
+  React.useEffect(() => {
     setDisplay(true);
     if (error) {
       setDisplay(true);
@@ -55,13 +55,13 @@ const Error = () => {
 };
 
 const Success = () => {
-  const [ display, setDisplay ] = useState(false);
+  const [ display, setDisplay ] = React.useState(false);
 
   const { flash }: any = usePage().props;
 
   const { success } = flash;
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (success) {
       setDisplay(true);
       setTimeout(() => {

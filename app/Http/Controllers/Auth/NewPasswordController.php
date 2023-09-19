@@ -21,16 +21,10 @@ class NewPasswordController extends Controller
      */
     public function create(Request $request): Response
     {
-        $seo = [
-            'title' => 'Reset Password - laravel-react',
-            'description' => '',
-            'keywords' => ['keywords1', 'keywords2', 'keywords3'],
-        ];
-
         return Inertia::render('Auth/ResetPassword', [
             'email' => $request->email,
             'token' => $request->route('token'),
-            'seo' => $seo,
+            'seo' => __('app/seo.auth.reset_password'),
         ]);
     }
 

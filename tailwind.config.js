@@ -4,8 +4,11 @@ module.exports = {
   content: [
     './resources/views/web.blade.php',
     './resources/views/app.blade.php',
+    './resources/views/admin.blade.php',
     './resources/react/web/**/*.{blade.php,php,css,scss,js,jsx,tsx}',
     './resources/react/app/**/*.{blade.php,php,css,scss,js,jsx,tsx}',
+    './resources/react/admin/**/*.{blade.php,php,css,scss,js,jsx,tsx}',
+    './resources/react/global/**/*.{css,scss,js,jsx,tsx}',
     'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}',
   ],
   theme: {

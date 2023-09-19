@@ -20,15 +20,9 @@ class EmailVerificationPromptController extends Controller
             return redirect()->intended(RouteServiceProvider::HOME);
         }
 
-        $seo = [
-            'title' => 'Verify your email - laravel-react',
-            'description' => '',
-            'keywords' => ['keywords1', 'keywords2', 'keywords3'],
-        ];
-
         return Inertia::render('Auth/VerifyEmail', [
             'status' => session('status'),
-            'seo' => $seo,
+            'seo' => __('app/seo.auth.verify_email'),
         ]);
     }
 }

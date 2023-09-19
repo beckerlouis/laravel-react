@@ -33,7 +33,9 @@ class HandleAppRequests extends Middleware
     public function share(Request $request): array
     {
         return array_merge(parent::share($request), [
-            'user' => $request->user() ? $request->user()->toArray() : null,
+            'auth' => [
+                'user' => $request->user() ?? null,
+            ],
             'flash' => [
                 'success' => $request->session()->get('success'),
                 'error' => $request->session()->get('error'),
@@ -49,7 +51,7 @@ class HandleAppRequests extends Middleware
     /**
      * Prepare exception for rendering.
      *
-     * @return \Illuminate\Http\JsonResponse|\Symfony\Component\HttpFoundation\Response
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function render($request, Throwable $e)
     {

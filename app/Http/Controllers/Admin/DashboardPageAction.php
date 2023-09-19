@@ -8,13 +8,10 @@ use Inertia\Inertia;
 
 class DashboardPageAction extends Controller
 {
-    /**
-     * Handle the incoming request.
-     */
-    public function __invoke(Request $request)
+    public function __invoke(Request $request): \Inertia\Response
     {
-        return Inertia::render('Dashboard', [
-            //
+        return Inertia::render('Dashboard/Dashboard', [
+            'seo' => __('admin/seo.dashboard'),
         ]);
     }
 }

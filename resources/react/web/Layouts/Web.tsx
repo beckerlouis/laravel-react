@@ -1,28 +1,26 @@
-import { Head, usePage } from '@inertiajs/react';
+import { Meta, Notifications } from '@kit/kit';
 import Footer from './Footer/Footer';
 import Navbar from './Navbar/Navbar';
-import Notifications from './Notifications';
 import React from 'react';
 
-type LayoutProps = {
-  children: React.ReactNode;
-};
+export const WebContext = React.createContext({});
 
-export const Web = ({ children }: LayoutProps) => {
-  const { seo }: any = usePage().props;
+export const Web = ({ children }: { children: React.ReactNode }) => {
+  const [ modal, setModal ] = React.useState<string | null>(null);
 
   return (
-    <>
-      <Head>
-        <title>{seo?.title}</title>
-        <meta name="description" content={seo?.description}/>
-        <meta name="keywords" content={seo?.keywords?.map((keyword) => keyword).join(', ')}/>
-      </Head>
+    <WebContext.Provider
+      value={{
+        modal,
+        setModal,
+      }}
+    >
+      <Meta/>
       <Navbar/>
       <main>{children}</main>
       <Footer/>
       <Notifications/>
-    </>
+    </WebContext.Provider>
   );
 };
 

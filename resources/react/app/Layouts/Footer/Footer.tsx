@@ -1,11 +1,11 @@
 import React from 'react';
-import './footer.scss';
+import style from './component.module.scss';
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="flex items-center justify-center text-sm text-gray-700 py-8">
+    <footer className={style.component}>
       <div className="text-left">&copy; {currentYear} - Laravel React</div>
     </footer>
   );

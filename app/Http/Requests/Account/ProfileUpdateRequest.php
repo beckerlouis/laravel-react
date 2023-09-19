@@ -29,7 +29,7 @@ class ProfileUpdateRequest extends FormRequest
         ];
     }
 
-    public function update()
+    public function update(): void
     {
         $this->user()->name = $this->name;
         $this->user()->email = $this->email;

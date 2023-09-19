@@ -1,20 +1,22 @@
 import { Link, useForm, usePage } from '@inertiajs/react';
 import { Button } from 'flowbite-react';
+import { Form } from '@kit/kit';
+import { PageProps } from '@kit/types';
 import React from 'react';
 import { Transition } from '@headlessui/react';
 
 export const UpdateProfileInformationForm = ({ mustVerifyEmail, status }: any) => {
-  const { user }: any = usePage().props;
+  const { auth }: any = usePage<PageProps>().props;
 
-  const { data, setData, patch, errors, processing, recentlySuccessful } = useForm({
-    name: user.name,
-    email: user.email,
+  const { data, setData, post, errors, processing, recentlySuccessful } = useForm({
+    name: auth.user.name,
+    email: auth.user.email,
   });
 
-  const submit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    patch(route('profile.update'));
+    post(route('profile.update'));
   };
 
   return (
@@ -25,7 +27,13 @@ export const UpdateProfileInformationForm = ({ mustVerifyEmail, status }: any) =
           Update your account's profile information and email address.
         </div>
       </header>
-      <form onSubmit={submit} className="space-y-6 mt-6">
+      <Form
+        onSubmit={handleSubmit}
+        data={data}
+        setData={setData}
+        errors={errors}
+        className="space-y-6 mt-6"
+      >
         <div>
           <label className="block font-medium text-sm text-gray-700">
             Email
@@ -62,7 +70,7 @@ export const UpdateProfileInformationForm = ({ mustVerifyEmail, status }: any) =
             {errors.email}
           </div>
         </div>
-        {mustVerifyEmail && user.email_verified_at === null && (
+        {mustVerifyEmail && auth.user.emailVerifiedAt === null && (
           <div>
             <div className="text-sm text-gray-800 mt-2">
               Your email address is unverified.
@@ -100,7 +108,7 @@ export const UpdateProfileInformationForm = ({ mustVerifyEmail, status }: any) =
             <div className="text-sm text-green-600">Saved.</div>
           </Transition>
         </div>
-      </form>
+      </Form>
     </section>
   );
 };

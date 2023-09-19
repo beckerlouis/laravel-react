@@ -28,7 +28,7 @@ class ProfileDestroyRequest extends FormRequest
         ];
     }
 
-    public function destroy()
+    public function destroy(): void
     {
         $user = $this->user();
 

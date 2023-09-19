@@ -1,11 +1,11 @@
-import React, { useRef } from 'react';
 import { Button } from 'flowbite-react';
+import React from 'react';
 import { Transition } from '@headlessui/react';
 import { useForm } from '@inertiajs/react';
 
 export const UpdatePasswordForm = () => {
-  const passwordInput = useRef<HTMLInputElement>();
-  const currentPasswordInput = useRef<HTMLInputElement>();
+  const passwordInput = React.useRef<HTMLInputElement>();
+  const currentPasswordInput = React.useRef<HTMLInputElement>();
 
   const { data, setData, errors, put, reset, processing, recentlySuccessful } = useForm({
     current_password: '',

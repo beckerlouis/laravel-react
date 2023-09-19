@@ -1,7 +1,7 @@
 import { Link, useForm } from '@inertiajs/react';
-import React, { useEffect } from 'react';
 import Auth from '../../Layouts/Auth';
 import { Button } from 'flowbite-react';
+import React from 'react';
 
 const Register = () => {
   const { data, setData, post, processing, errors, reset } = useForm({
@@ -11,7 +11,7 @@ const Register = () => {
     password_confirmation: '',
   });
 
-  useEffect(() => () => {
+  React.useEffect(() => () => {
     reset('password', 'password_confirmation');
   }, []);
 

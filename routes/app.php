@@ -1,28 +1,25 @@
 <?php
 
+use App\Http\Controllers\App\Account\ProfileDestroyAction;
 use App\Http\Controllers\App\Account\ProfilePageAction;
-use App\Http\Controllers\App\AppPageAction;
+use App\Http\Controllers\App\Account\ProfileUpdateAction;
+use App\Http\Controllers\App\DashboardPageAction;
 use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
 | App Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
 
 Route::middleware('auth')->group(function () {
     Route::middleware('verified')->group(function () {
-        Route::get('/', AppPageAction::class)->name('app');
+        Route::get('/', DashboardPageAction::class)->name('app');
 
         Route::prefix('profile')->middleware('password.confirm')->group(function () {
             Route::get('/', ProfilePageAction::class)->name('profile');
-            Route::patch('/', [ProfilePageAction::class, 'update'])->name('profile.update');
-            Route::delete('/', [ProfilePageAction::class, 'destroy'])->name('profile.destroy');
+            Route::post('/profile-update', ProfileUpdateAction::class)->name('profile.update');
+            Route::delete('/profile-destroy', ProfileDestroyAction::class)->name('profile.destroy');
         });
     });
 });

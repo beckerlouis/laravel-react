@@ -1,11 +1,13 @@
 import { Dialog, Transition } from '@headlessui/react';
-import React, { Fragment, useRef, useState } from 'react';
+import { AppContext } from '../../../Layouts/App';
 import { Button } from 'flowbite-react';
+import React from 'react';
 import { useForm } from '@inertiajs/react';
 
 export const DeleteUserForm = () => {
-  const [ modal, setModal ] = useState(false);
-  const passwordInput = useRef<HTMLInputElement>();
+  const { modal, setModal } = React.useContext<any>(AppContext);
+
+  const passwordInput = React.useRef<HTMLInputElement>();
 
   const {
     data,
@@ -15,10 +17,6 @@ export const DeleteUserForm = () => {
     reset,
     errors,
   } = useForm({ password: '' });
-
-  const confirmUserDeletion = () => {
-    setModal(true);
-  };
 
   const deleteUser = (e) => {
     e.preventDefault();
@@ -32,7 +30,7 @@ export const DeleteUserForm = () => {
   };
 
   const handleClose = () => {
-    setModal(false);
+    setModal(null);
 
     reset();
   };
@@ -47,12 +45,12 @@ export const DeleteUserForm = () => {
             deleting your account, please download any data or information that you wish to retain.
           </div>
         </header>
-        <Button color="failure" size="sm" onClick={confirmUserDeletion}>Delete Account</Button>
+        <Button color="failure" size="sm" onClick={() => setModal('modal-delete-account')}>Delete Account</Button>
       </section>
-      <Transition appear show={modal} as={Fragment}>
+      <Transition appear show={modal === 'modal-delete-account'} as={React.Fragment}>
         <Dialog as="div" className="relative z-10" onClose={handleClose}>
           <Transition.Child
-            as={Fragment}
+            as={React.Fragment}
             enter="ease-out duration-300"
             enterFrom="opacity-0"
             enterTo="opacity-100"
@@ -65,7 +63,7 @@ export const DeleteUserForm = () => {
           <div className="fixed inset-0 overflow-y-auto">
             <div className="flex items-center justify-center p-4 min-h-full">
               <Transition.Child
-                as={Fragment}
+                as={React.Fragment}
                 enter="ease-out duration-300"
                 enterFrom="opacity-0 scale-95"
                 enterTo="opacity-100 scale-100"
@@ -101,7 +99,7 @@ export const DeleteUserForm = () => {
                       </div>
                     </div>
                     <div className="flex gap-2 items-center justify-end mt-6">
-                      <Button color="gray" size="sm" onClick={handleClose}>Cancel</Button>
+                      <Button color="gray" size="sm" onClick={() => setModal(null)}>Cancel</Button>
                       <Button type="submit" color="failure" size="sm" disabled={processing}>Delete Account</Button>
                     </div>
                   </form>

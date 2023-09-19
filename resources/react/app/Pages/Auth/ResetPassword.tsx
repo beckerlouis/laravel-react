@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
 import Auth from '../../Layouts/Auth';
 import { Button } from 'flowbite-react';
+import React from 'react';
 import { useForm } from '@inertiajs/react';
 
 const ResetPassword = ({ token, email }: any) => {
@@ -11,7 +11,7 @@ const ResetPassword = ({ token, email }: any) => {
     password_confirmation: '',
   });
 
-  useEffect(() => () => {
+  React.useEffect(() => () => {
     reset('password', 'password_confirmation');
   }, []);
 

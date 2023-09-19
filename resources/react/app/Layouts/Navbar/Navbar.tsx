@@ -1,21 +1,26 @@
 import { Link, usePage } from '@inertiajs/react';
 import { Menu, Transition } from '@headlessui/react';
-import React, { Fragment } from 'react';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import './navbar.scss';
+import { PageProps } from '@kit/types';
+import React from 'react';
+import style from './component.module.scss';
 
 export const Navbar = () => {
-  const { user }: any = usePage().props;
+  const { auth } = usePage<PageProps>().props;
 
-  const userMenu = [
+  const userMenu: any = [
     {
       name: 'Profile',
       route: route('profile'),
     },
     {
       name: 'Administration',
-      route: '/admin',
+      link: '/admin',
+    },
+    {
+      name: 'Go to Website',
+      link: '/',
     },
     {
       name: 'Log Out',
@@ -24,7 +29,7 @@ export const Navbar = () => {
   ];
 
   return (
-    <nav className="px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
+    <nav className={style.component}>
       <div className="flex items-center justify-between h-24">
         <Link href={route('app')} className="flex items-center justify-center">
           <img src="/helpers/laravel.svg" className="w-8" alt=""/>
@@ -36,12 +41,12 @@ export const Navbar = () => {
             <div>
               <Menu.Button
                 className="inline-flex items-center justify-center text-sm text-gray-600 font-medium rounded-md w-full">
-                {user?.name}
+                {auth?.user?.name}
                 <FontAwesomeIcon icon={faAngleDown} className="ml-2 -mr-1"/>
               </Menu.Button>
             </div>
             <Transition
-              as={Fragment}
+              as={React.Fragment}
               enter="transition ease-out duration-100"
               enterFrom="transform opacity-0 scale-95"
               enterTo="transform opacity-100 scale-100"
@@ -52,15 +57,26 @@ export const Navbar = () => {
               <Menu.Items
                 className="absolute right-0 bg-white origin-top-right divide-y divide-gray-100 rounded-md shadow-lg mt-2 w-40">
                 <div className="px-1 py-1">
-                  {userMenu.map((menu, idx) => (
+                  {userMenu.map((menu: { link: string; route: string; name: string; }, idx: number) => (
                     <Menu.Item key={idx}>
                       {({ active }) => (
-                        <a
-                          href={menu.route}
-                          className={`flex items-center ${active ? 'bg-gray-100' : ''} text-sm text-gray-900 group rounded-md px-2 py-2 w-full`}
-                        >
-                          {menu.name}
-                        </a>
+                        <>
+                          {menu.link ? (
+                            <a
+                              href={menu.link}
+                              className={`flex items-center ${active ? 'bg-gray-100' : ''} text-sm text-gray-900 group rounded-md px-2 py-2 w-full`}
+                            >
+                              {menu.name}
+                            </a>
+                          ) : (
+                            <Link
+                              href={menu.route}
+                              className={`flex items-center ${active ? 'bg-gray-100' : ''} text-sm text-gray-900 group rounded-md px-2 py-2 w-full`}
+                            >
+                              {menu.name}
+                            </Link>
+                          )}
+                        </>
                       )}
                     </Menu.Item>
                   ))}

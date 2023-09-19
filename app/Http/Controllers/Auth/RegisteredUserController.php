@@ -21,14 +21,8 @@ class RegisteredUserController extends Controller
      */
     public function create(): Response
     {
-        $seo = [
-            'title' => 'Register - laravel-react',
-            'description' => '',
-            'keywords' => ['keywords1', 'keywords2', 'keywords3'],
-        ];
-
         return Inertia::render('Auth/Register', [
-            'seo' => $seo,
+            'seo' => __('app/seo.auth.register'),
         ]);
     }
 

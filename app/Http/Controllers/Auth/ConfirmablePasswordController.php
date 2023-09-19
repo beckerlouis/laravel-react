@@ -18,14 +18,8 @@ class ConfirmablePasswordController extends Controller
      */
     public function show(): Response
     {
-        $seo = [
-            'title' => 'Confirm your password - laravel-react',
-            'description' => '',
-            'keywords' => ['keywords1', 'keywords2', 'keywords3'],
-        ];
-
         return Inertia::render('Auth/ConfirmPassword', [
-            'seo' => $seo,
+            'seo' => __('app/seo.auth.confirm_password'),
         ]);
     }
 

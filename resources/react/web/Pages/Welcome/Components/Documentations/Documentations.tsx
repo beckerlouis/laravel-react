@@ -1,12 +1,10 @@
-import React, { Fragment } from 'react';
-import ApplicationLogo from './Components/ApplicationLogo';
 import { faNpm } from '@fortawesome/free-brands-svg-icons';
 import { faSitemap } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { usePage } from '@inertiajs/react';
-import Web from '../Layouts/Web';
+import React from 'react';
+import style from './component.module.scss';
 
-const Welcome = () => {
+export const Documentations = () => {
   const documentation = [
     {
       name: 'Package.json',
@@ -226,45 +224,15 @@ const Welcome = () => {
   ];
 
   return (
-    <div className="bg-gray-100 bg-dots-darker bg-center selection:bg-blue-300 selection:text-white min-h-screen">
-      <div className="px-8 sm:pt-10 pb-20 mx-auto max-w-7xl w-full">
-        <Auth />
-        <ApplicationLogo />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
-          {documentation?.map((doc, idx) => (
-            <Documentation doc={doc} key={idx}/>
-          ))}
-        </div>
-      </div>
+    <div className={style.component}>
+      {documentation?.map((doc, idx) => (
+        <Documentation doc={doc} key={idx}/>
+      ))}
     </div>
   );
 };
-
-const Auth = () => {
-  const { user }:any = usePage().props;
-
-  return (
-    <div className="sm:fixed sm:top-0 sm:right-0 text-center sm:text-right p-6">
-      {user ? (
-        <a href="/app" className="text-gray-600 hover:text-gray-900 font-semibold">
-          Dashboard
-        </a>
-      ) : (
-        <>
-          <a href="/app/login" className="text-gray-600 hover:text-gray-900 font-semibold">
-            Log in
-          </a>
-          <a href="/app/register" className="ml-4 text-gray-600 hover:text-gray-900 font-semibold">
-            Register
-          </a>
-        </>
-      )}
-    </div>
-  );
-};
-
-const Documentation = ({ doc }:any) => (
-  <div className="bg-white shadow-2xl shadow-gray-500/20 rounded-lg p-6 w-full">
+const Documentation = ({ doc }: any) => (
+  <div className={style.row}>
     <div>
       <div className="flex items-center justify-center bg-red-50 rounded-full h-16 w-16">
         {doc.icon ? (
@@ -279,30 +247,25 @@ const Documentation = ({ doc }:any) => (
         <ul className="list-disc list-inside">
           {doc.list?.map((item, idx) => (
             <li key={idx}>
-              {/* @ts-ignore */}
               {item.length > 0 ? (
-                <Fragment>
-                  {item
-                  // @ts-ignore
-                    .map((subItem, idx) => <a
-                      href={subItem.url}
-                      className="underline"
-                      target="_blank"
-                      rel="noreferrer"
-                      key={idx}>
-                      {subItem.name}
-                    </a>)
+                <React.Fragment>
+                  {item.map((subItem, idx) => <a
+                    href={subItem.url}
+                    className="underline"
+                    target="_blank"
+                    rel="noreferrer"
+                    key={idx}>
+                    {subItem.name}
+                  </a>)
                     .reduce((acc, x) => acc === null ? [ x ] : [ acc, ', ', x ], null)}
-                </Fragment>
+                </React.Fragment>
               ) : (
                 <a
-                  // @ts-ignore
                   href={item.url}
                   className="underline"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  {/* @ts-ignore */}
                   {item.name}
                 </a>
               )}
@@ -313,7 +276,3 @@ const Documentation = ({ doc }:any) => (
     </div>
   </div>
 );
-
-Welcome.layout = (page) => <Web>{page}</Web>;
-
-export default Welcome;

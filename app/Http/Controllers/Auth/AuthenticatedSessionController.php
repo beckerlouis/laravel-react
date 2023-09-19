@@ -18,15 +18,9 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): Response
     {
-        $seo = [
-            'title' => 'Login - laravel-react',
-            'description' => '',
-            'keywords' => ['keywords1', 'keywords2', 'keywords3'],
-        ];
-
         return Inertia::render('Auth/Login', [
             'status' => session('status'),
-            'seo' => $seo,
+            'seo' => __('app/seo.auth.login'),
         ]);
     }
 
@@ -39,7 +33,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect(RouteServiceProvider::HOME);
     }
 
     /**
