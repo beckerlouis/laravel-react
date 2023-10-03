@@ -1,3 +1,4 @@
+import { clx } from '@kit/utils';
 import { faNpm } from '@fortawesome/free-brands-svg-icons';
 import { faSitemap } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -234,24 +235,24 @@ export const Documentations = () => {
 const Documentation = ({ doc }: any) => (
   <div className={style.row}>
     <div>
-      <div className="flex items-center justify-center bg-red-50 rounded-full h-16 w-16">
+      <div className={clx('flex items-center justify-center bg-red-50 rounded-full h-16 w-16')}>
         {doc.icon ? (
-          <FontAwesomeIcon icon={doc.icon} className="text-red-500 h-7 w-7"/>
+          <FontAwesomeIcon icon={doc.icon} className={clx('text-red-500 h-7 w-7')}/>
         ) : (
           <img src={doc.image.src} className={doc.image.className} alt=""/>
         )}
       </div>
-      <div className="text-xl font-semibold mt-6">{doc.name}</div>
-      <div className="text-sm text-gray-500 leading-relaxed mt-4">
+      <div className={clx('text-xl font-semibold mt-6')}>{doc.name}</div>
+      <div className={clx('text-sm text-gray-500 leading-relaxed mt-4')}>
         <div dangerouslySetInnerHTML={{ __html: doc.description }}/>
-        <ul className="list-disc list-inside">
+        <ul className={clx('list-disc list-inside')}>
           {doc.list?.map((item, idx) => (
             <li key={idx}>
               {item.length > 0 ? (
                 <React.Fragment>
                   {item.map((subItem, idx) => <a
                     href={subItem.url}
-                    className="underline"
+                    className={clx('underline')}
                     target="_blank"
                     rel="noreferrer"
                     key={idx}>
@@ -262,7 +263,7 @@ const Documentation = ({ doc }: any) => (
               ) : (
                 <a
                   href={item.url}
-                  className="underline"
+                  className={clx('underline')}
                   target="_blank"
                   rel="noreferrer"
                 >

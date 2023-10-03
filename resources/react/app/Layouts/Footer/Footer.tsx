@@ -1,3 +1,4 @@
+import { clx } from '@kit/utils';
 import React from 'react';
 import style from './component.module.scss';
 
@@ -6,7 +7,7 @@ export const Footer = () => {
 
   return (
     <footer className={style.component}>
-      <div className="text-left">&copy; {currentYear} - Laravel React</div>
+      <div className={clx('text-left')}>&copy; {currentYear} - Laravel React</div>
     </footer>
   );
 };

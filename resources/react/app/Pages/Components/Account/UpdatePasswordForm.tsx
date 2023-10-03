@@ -1,4 +1,5 @@
 import { Button } from 'flowbite-react';
+import { clx } from '@kit/utils';
 import React from 'react';
 import { Transition } from '@headlessui/react';
 import { useForm } from '@inertiajs/react';
@@ -43,7 +44,7 @@ export const UpdatePasswordForm = () => {
       </header>
       <form onSubmit={updatePassword} className="space-y-6 mt-6">
         <div>
-          <label className="block font-medium text-sm text-gray-700">
+          <label className={clx('block font-medium text-sm text-gray-700')}>
             Current Password
           </label>
           <input
@@ -53,15 +54,15 @@ export const UpdatePasswordForm = () => {
             value={data.current_password}
             autoComplete="current_password"
             onChange={(e) => setData('current_password', e.target.value)}
-            className="block border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full"
+            className={clx('block border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full')}
             required
           />
-          <div className="text-sm text-red-600">
+          <div className={clx('text-sm text-red-600')}>
             {errors.current_password}
           </div>
         </div>
         <div>
-          <label className="block font-medium text-sm text-gray-700">
+          <label className={clx('block font-medium text-sm text-gray-700')}>
             Password
           </label>
           <input
@@ -71,15 +72,15 @@ export const UpdatePasswordForm = () => {
             value={data.password}
             autoComplete="password"
             onChange={(e) => setData('password', e.target.value)}
-            className="block border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full"
+            className={clx('block border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full')}
             required
           />
-          <div className="text-sm text-red-600">
+          <div className={clx('text-sm text-red-600')}>
             {errors.password}
           </div>
         </div>
         <div>
-          <label className="block font-medium text-sm text-gray-700">
+          <label className={clx('block font-medium text-sm text-gray-700')}>
             Confirm Password
           </label>
           <input
@@ -89,14 +90,14 @@ export const UpdatePasswordForm = () => {
             value={data.password_confirmation}
             autoComplete="new-password"
             onChange={(e) => setData('password_confirmation', e.target.value)}
-            className="block border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full"
+            className={clx('block border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full')}
             required
           />
-          <div className="text-sm text-red-600">
+          <div className={clx('text-sm text-red-600')}>
             {errors.password_confirmation}
           </div>
         </div>
-        <div className="flex items-center gap-4">
+        <div className={clx('flex items-center gap-4')}>
           <Button
             type="submit"
             color="dark"
@@ -109,9 +110,9 @@ export const UpdatePasswordForm = () => {
             show={recentlySuccessful}
             enterFrom="opacity-0"
             leaveTo="opacity-0"
-            className="transition ease-in-out"
+            className={clx('transition ease-in-out')}
           >
-            <div className="text-sm text-green-600">Saved.</div>
+            <div className={clx('text-sm text-green-600')}>Saved.</div>
           </Transition>
         </div>
       </form>
