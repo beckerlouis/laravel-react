@@ -1,10 +1,7 @@
+import { ModalExample } from './modals';
 import Admin from '../../Layouts/Admin';
-import { Button } from 'flowbite-react';
-import { clx } from '@kit/utils';
-import ModalExample from './Modals/ModalExample';
-import React from 'react';
-import style from './page.module.scss';
 import { useAppState } from '@kit/contexts';
+import { Button } from 'flowbite-react';
 
 const Dashboard = () => {
   const { setModal } = useAppState();
@@ -12,10 +9,10 @@ const Dashboard = () => {
   const modalValue = 'modal-example';
 
   return (
-    <div className={style.page}>
+    <div className="flex h-full w-full items-center justify-center">
       <div>
         <div>admin dashboard</div>
-        <div className={clx('mt-4')}>
+        <div className="mt-4">
           <Button
             color="gray"
             size="sm"

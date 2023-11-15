@@ -1,12 +1,11 @@
-import { Card, DeleteUserForm, UpdatePasswordForm, UpdateProfileInformationForm } from '../Components';
 import App from '../../Layouts/App';
-import { clx } from '@kit/utils';
-import React from 'react';
+import { Card, DeleteUserForm, UpdatePasswordForm, UpdateProfileInformationForm } from '../components';
+import { Fragment } from 'react';
 
 const Profile = ({ mustVerifyEmail, status }: any) => (
-  <>
+  <Fragment>
     <Card>
-      <h2 className={clx('text-xl text-gray-800 font-semibold leading-tight')}>Profile</h2>
+      <h2 className="text-xl text-gray-800 font-semibold leading-tight">Profile</h2>
     </Card>
     <Card>
       <UpdateProfileInformationForm
@@ -20,7 +19,7 @@ const Profile = ({ mustVerifyEmail, status }: any) => (
     <Card>
       <DeleteUserForm/>
     </Card>
-  </>
+  </Fragment>
 );
 
 Profile.layout = (page) => <App>{page}</App>;

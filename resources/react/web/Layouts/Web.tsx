@@ -1,10 +1,9 @@
-import { Meta, Notifications } from '@kit/kit';
+import { Footer, Navbar } from './components';
 import { AppStateProvider } from '@kit/contexts';
-import Footer from './Footer/Footer';
-import Navbar from './Navbar/Navbar';
-import React from 'react';
+import { Meta, Notifications } from '@kit/kit';
+import { ReactNode } from 'react';
 
-export const Web = ({ children }: { children: React.ReactNode }) => (
+export const Web = ({ children }: { children: ReactNode }) => (
   <AppStateProvider>
     <Meta/>
     <Navbar/>

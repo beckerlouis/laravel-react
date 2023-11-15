@@ -1,8 +1,7 @@
 import { createInertiaApp } from '@inertiajs/react';
-import { createRoot } from 'react-dom/client';
-import React from 'react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
-import './bootstrap';
+import { createRoot } from 'react-dom/client';
+import '@kit/bootstrap';
 import './web.scss';
 
 createInertiaApp({

@@ -1,13 +1,11 @@
-import { Auth, Documentations } from './Components';
-import { ApplicationLogo } from '@kit/kit';
-import { clx } from '@kit/utils';
-import React from 'react';
+import { Auth, Documentations } from './components';
 import style from './page.module.scss';
 import Web from '../../Layouts/Web';
+import { ApplicationLogo } from '@kit/kit';
 
 const Welcome = () => (
   <div className={style.page}>
-    <div className={clx('px-8 sm:pt-10 pb-20 mx-auto max-w-7xl w-full')}>
+    <div className="px-8 sm:pt-10 pb-20 mx-auto max-w-7xl w-full">
       <Auth />
       <ApplicationLogo />
       <Documentations />

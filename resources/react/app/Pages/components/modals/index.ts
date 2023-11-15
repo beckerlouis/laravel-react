@@ -1,0 +1,1 @@
+export { ModalDeleteUser } from './ModalDeleteUser';
