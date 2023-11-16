@@ -1,5 +1,6 @@
 import App from '../../Layouts/App';
 import { Card } from '../components';
+import { ReactNode } from 'react';
 
 const Dashboard = () => (
   <Card>
@@ -7,6 +8,6 @@ const Dashboard = () => (
   </Card>
 );
 
-Dashboard.layout = (page) => <App>{page}</App>;
+Dashboard.layout = (page: ReactNode) => <App>{page}</App>;
 
 export default Dashboard;

@@ -1,7 +1,7 @@
 import Auth from '../../Layouts/Auth';
 import { useForm } from '@inertiajs/react';
 import { Button } from 'flowbite-react';
-import { useEffect } from 'react';
+import { ReactNode, useEffect } from 'react';
 
 const ConfirmPassword = () => {
   const { data, setData, post, processing, errors, reset } = useForm({ password: '' });
@@ -55,6 +55,6 @@ const ConfirmPassword = () => {
   );
 };
 
-ConfirmPassword.layout = (page) => <Auth>{page}</Auth>;
+ConfirmPassword.layout = (page: ReactNode) => <Auth>{page}</Auth>;
 
 export default ConfirmPassword;

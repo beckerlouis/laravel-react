@@ -2,6 +2,7 @@ import { Auth, Documentations } from './components';
 import style from './page.module.scss';
 import Web from '../../Layouts/Web';
 import { ApplicationLogo } from '@kit/kit';
+import { ReactNode } from 'react';
 
 const Welcome = () => (
   <div className={style.page}>
@@ -13,6 +14,6 @@ const Welcome = () => (
   </div>
 );
 
-Welcome.layout = (page) => <Web>{page}</Web>;
+Welcome.layout = (page: ReactNode) => <Web>{page}</Web>;
 
 export default Welcome;

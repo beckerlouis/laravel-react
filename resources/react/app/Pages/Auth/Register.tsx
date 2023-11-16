@@ -1,7 +1,7 @@
 import Auth from '../../Layouts/Auth';
 import { Link, useForm } from '@inertiajs/react';
 import { Button } from 'flowbite-react';
-import { useEffect } from 'react';
+import { ReactNode, useEffect } from 'react';
 
 const Register = () => {
   const { data, setData, post, processing, errors, reset } = useForm({
@@ -116,6 +116,6 @@ const Register = () => {
   );
 };
 
-Register.layout = (page) => <Auth>{page}</Auth>;
+Register.layout = (page: ReactNode) => <Auth>{page}</Auth>;
 
 export default Register;

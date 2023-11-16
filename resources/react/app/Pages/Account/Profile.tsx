@@ -1,6 +1,6 @@
 import App from '../../Layouts/App';
 import { Card, DeleteUserForm, UpdatePasswordForm, UpdateProfileInformationForm } from '../components';
-import { Fragment } from 'react';
+import { Fragment, ReactNode } from 'react';
 
 const Profile = ({ mustVerifyEmail, status }: any) => (
   <Fragment>
@@ -22,6 +22,6 @@ const Profile = ({ mustVerifyEmail, status }: any) => (
   </Fragment>
 );
 
-Profile.layout = (page) => <App>{page}</App>;
+Profile.layout = (page: ReactNode) => <App>{page}</App>;
 
 export default Profile;

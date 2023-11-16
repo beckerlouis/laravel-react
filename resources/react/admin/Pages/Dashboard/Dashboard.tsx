@@ -2,6 +2,7 @@ import { ModalExample } from './modals';
 import Admin from '../../Layouts/Admin';
 import { useAppState } from '@kit/contexts';
 import { Button } from 'flowbite-react';
+import { ReactNode } from 'react';
 
 const Dashboard = () => {
   const { setModal } = useAppState();
@@ -27,6 +28,6 @@ const Dashboard = () => {
   );
 };
 
-Dashboard.layout = (page) => <Admin>{page}</Admin>;
+Dashboard.layout = (page: ReactNode) => <Admin>{page}</Admin>;
 
 export default Dashboard;

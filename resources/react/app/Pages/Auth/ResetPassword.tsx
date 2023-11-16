@@ -1,7 +1,7 @@
 import Auth from '../../Layouts/Auth';
 import { useForm } from '@inertiajs/react';
 import { Button } from 'flowbite-react';
-import { useEffect } from 'react';
+import { ReactNode, useEffect } from 'react';
 
 const ResetPassword = ({ token, email }: any) => {
   const { data, setData, post, processing, errors, reset } = useForm({
@@ -91,6 +91,6 @@ const ResetPassword = ({ token, email }: any) => {
   );
 };
 
-ResetPassword.layout = (page) => <Auth>{page}</Auth>;
+ResetPassword.layout = (page: ReactNode) => <Auth>{page}</Auth>;
 
 export default ResetPassword;

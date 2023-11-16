@@ -1,7 +1,7 @@
 import Auth from '../../Layouts/Auth';
 import { Link, useForm } from '@inertiajs/react';
 import { Button } from 'flowbite-react';
-import { useEffect } from 'react';
+import { ReactNode, useEffect } from 'react';
 
 const Login = () => {
   const { data, setData, post, processing, errors, reset } = useForm({
@@ -90,6 +90,6 @@ const Login = () => {
   );
 };
 
-Login.layout = (page) => <Auth>{page}</Auth>;
+Login.layout = (page: ReactNode) => <Auth>{page}</Auth>;
 
 export default Login;

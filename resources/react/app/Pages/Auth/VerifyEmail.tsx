@@ -1,6 +1,7 @@
 import Auth from '../../Layouts/Auth';
 import { Link, useForm } from '@inertiajs/react';
 import { Button } from 'flowbite-react';
+import { ReactNode } from 'react';
 
 const VerifyEmail = ({ status }: any) => {
   const { post } = useForm({});
@@ -41,6 +42,6 @@ const VerifyEmail = ({ status }: any) => {
   );
 };
 
-VerifyEmail.layout = (page) => <Auth>{page}</Auth>;
+VerifyEmail.layout = (page: ReactNode) => <Auth>{page}</Auth>;
 
 export default VerifyEmail;

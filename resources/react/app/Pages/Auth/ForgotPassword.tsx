@@ -1,6 +1,7 @@
 import Auth from '../../Layouts/Auth';
 import { useForm } from '@inertiajs/react';
 import { Button } from 'flowbite-react';
+import { ReactNode } from 'react';
 
 const ForgotPassword = ({ status }: any) => {
   const { data, setData, post, processing, errors } = useForm({ email: '' });
@@ -50,6 +51,6 @@ const ForgotPassword = ({ status }: any) => {
   );
 };
 
-ForgotPassword.layout = (page) => <Auth>{page}</Auth>;
+ForgotPassword.layout = (page: ReactNode) => <Auth>{page}</Auth>;
 
 export default ForgotPassword;
